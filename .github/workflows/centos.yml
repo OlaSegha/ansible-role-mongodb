@@ -15,7 +15,6 @@ jobs:
       matrix:
         molecule_distro: 
           - centos7
-          - centos8
         mongodb_version:
           - '5.0'
           - '6.0'
