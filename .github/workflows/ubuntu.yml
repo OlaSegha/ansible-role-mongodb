@@ -14,8 +14,8 @@ jobs:
     strategy:
       matrix:
         molecule_distro:
-          - ubuntu1804
           - ubuntu2004
+          - ubuntu2204
         mongodb_version:
           - '5.0'
           - '6.0'

@@ -11,7 +11,7 @@ lint: |
 platforms:
   - name: mongo1
     image: "geerlingguy/docker-${MOLECULE_DISTRO:-ubuntu2204}-ansible:latest"
-#    command: ${MOLECULE_COMMAND:-/usr/sbin/init}
+    command: ${MOLECULE_COMMAND:-/usr/sbin/init}
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:rw
     pre_build_image: true
