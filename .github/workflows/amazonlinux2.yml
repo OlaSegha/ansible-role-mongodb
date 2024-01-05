@@ -16,10 +16,9 @@ jobs:
         molecule_distro:
           - amazonlinux2
         mongodb_version:
-          - '4.4'
-          - '4.2'
-          - '4.0'
-          - '3.6'
+          - '5.0'
+          - '6.0'
+          - '7.0'
     env:
       MONGODB_VERSION: ${{ matrix.mongodb_version }}
       MOLECULE_DISTRO: ${{ matrix.molecule_distro }}
