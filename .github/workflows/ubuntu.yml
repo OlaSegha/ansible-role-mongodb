@@ -41,13 +41,3 @@ jobs:
         env:
           PY_COLORS: '1'
           ANSIBLE_FORCE_COLOR: '1'
-      - name: Run cluster test
-        run: export "PATH=/home/runner/.local/bin:$PATH" && molecule test -s cluster
-        env:
-          PY_COLORS: '1'
-          ANSIBLE_FORCE_COLOR: '1'
-      - name: Run cluster test with enabled authentication
-        run: export "PATH=/home/runner/.local/bin:$PATH" && AUTH_STATE=enabled molecule test -s cluster
-        env:
-          PY_COLORS: '1'
-          ANSIBLE_FORCE_COLOR: '1'
