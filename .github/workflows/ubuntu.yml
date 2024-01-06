@@ -20,6 +20,9 @@ jobs:
           - '5.0'
           - '6.0'
           - '7.0'
+        exclude:
+          - molecule_distro: ubuntu2204
+            mongodb_version: '5.0'
     env:
       MONGODB_VERSION: ${{ matrix.mongodb_version }}
       MOLECULE_DISTRO: ${{ matrix.molecule_distro }}

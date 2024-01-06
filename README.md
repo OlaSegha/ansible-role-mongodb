@@ -9,19 +9,6 @@ Ansible role to install and manage [MongoDB](http://www.mongodb.org/).
 - Configure replication
 - Setup MMS automation agent;
 
-MongoDB support matrix:
-
-| Distribution   |  MongoDB 5.0 |    MongoDB 6.0    |    MongoDB 7.0     |
-| -------------- | :-----------: | :----------------: | :----------------: |
-| Ubuntu 20.04   |  :white_check_mark: | :white_check_mark: | :white_check_mark: | 
-| Ubuntu 22.04   |  :white_check_mark: | :white_check_mark: | :white_check_mark: | 
-| RHEL 7.x       |  :white_check_mark: | :white_check_mark: | :white_check_mark: |
-| RHEL 8.x       |  :white_check_mark: | :white_check_mark: | :white_check_mark: |
-| Amazon Linux 2 |  :white_check_mark: | :white_check_mark: | :white_check_mark: |
-
-- :white_check_mark: - fully tested
-- :x: - don't have official support
-- :no_entry: - MongoDB has reached EOL
 
 #### Variables
 
