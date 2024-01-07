@@ -109,7 +109,7 @@ mongodb_root_backup_password: passw0rd
 
 #### Usage
 
-Add `undergreen.mongodb` to your roles and set vars in your playbook file.
+Add `olasegha.mongodb` to your roles and set vars in your playbook file.
 
 Example vars for authorization:
 
