@@ -1,9 +1,9 @@
-FROM debian:9
+FROM ubuntu:22.04
 
 ARG DEBIAN_FRONTEND=noninteractive
 
 RUN apt update && \
-    apt install --yes python-minimal systemd gnupg python-pip
+    apt install --yes python-minimal -pip python-dev systemd gnupg iproute2
 
 RUN cd /lib/systemd/system/sysinit.target.wants/ && \
 		ls | grep -v systemd-tmpfiles-setup.service | xargs rm -f && \
@@ -27,5 +27,3 @@ RUN cd /lib/systemd/system/sysinit.target.wants/ && \
 
 RUN sed -ri /etc/systemd/journald.conf \
 			-e 's!^#?Storage=.*!Storage=volatile!'
-
-RUN ln -s /lib/systemd/systemd /sbin/init

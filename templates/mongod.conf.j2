@@ -31,25 +31,9 @@ processManagement:
   {% endfor %}
   {% endif %}
 
-{% if mongodb_replication_replset -%}
-replication:
-  oplogSizeMB: {{ mongodb_replication_oplogsize | int }}
-  replSetName: {{ mongodb_replication_replset }}
-  {% if mongodb_storage_engine == 'mmapv1' -%}
-  secondaryIndexPrefetch: {{ mongodb_replication_replindexprefetch }}
-  {%- endif %}
-  {%- if mongodb_config['replication'] is defined and mongodb_config['replication'] is iterable %}
-  {%- for item in mongodb_config['replication'] -%}
-  {{ item }}
-  {% endfor %}
-  {% endif %}
-{% endif %}
 
 security:
   authorization: {{ mongodb_security_authorization }}
-  {% if mongodb_replication_replset and mongodb_security_authorization == 'enabled' -%}
-  keyFile: {{ mongodb_security_keyfile }}
-  {% endif -%}
   javascriptEnabled: {{ mongodb_security_javascript_enabled | to_nice_json }}
   {%- if mongodb_config['security'] is defined and mongodb_config['security'] is iterable %}
   {%- for item in mongodb_config['security'] -%}
@@ -61,8 +45,10 @@ storage:
   dbPath: {{ mongodb_storage_dbpath }}
   directoryPerDB: {{ mongodb_storage_dirperdb | to_nice_json }}
   engine: {{ mongodb_storage_engine }}
+  {% if mongodb_major_version is version("7.0", "<") -%}
   journal:
     enabled: {{ mongodb_storage_journal_enabled | to_nice_json }}
+  {% endif -%}
   {% if mongodb_storage_engine == 'mmapv1' -%}
   mmapv1:
     quota:
@@ -105,18 +91,6 @@ operationProfiling:
   {{ item }}
   {% endfor %}
   {% endif %}
-
-{% if mongodb_major_version is version("4.0", ">=") -%}
-cloud:
-  monitoring:
-    free:
-      state: {{ mongodb_cloud_monitoring_free_state }}
-  {%- if mongodb_config['cloud'] is defined and mongodb_config['cloud'] is iterable %}
-  {%- for item in mongodb_config['cloud'] -%}
-  {{ item }}
-  {% endfor %}
-  {% endif %}
-{% endif %}
 
 {% if mongodb_set_parameters -%}
 setParameter:

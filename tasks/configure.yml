@@ -27,14 +27,6 @@
     state: present
   when: mongodb_uid is defined
 
-- name: Create keyFile
-  copy:
-    dest: "{{ mongodb_security_keyfile }}"
-    content: "{{ mongodb_keyfile_content }}"
-    owner: "{{ mongodb_user }}"
-    group: "root"
-    mode: 0600
-  when: mongodb_replication_replset | length > 0
 
 - name: Create log dir if missing
   file:

@@ -55,8 +55,6 @@
         networks_cli_compatible: yes
       with_items:
         - mongo1
-        - mongo2
-        - mongo3
 
 - hosts: mongo
   become: no
